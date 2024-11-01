@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ProyectoProgramacionV</string>
+    <string name="welcome_text"><font color="#76B414">Bienvenido</font><font color="#E51514"> Fabian Jimenez </font></string>
+</resources>
