@@ -1,49 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="27dp"
-        android:layout_height="29dp"
-        android:backgroundTint="#FFF7FF"
-        android:src="@drawable/baseline_language_24"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="77dp" />
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:padding="24dp"
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="152dp"
-        android:layout_height="57dp"
-        android:backgroundTint="#FFF7FF"
-        app:srcCompat="@mipmap/image"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="129dp"
-        tools:layout_editor_absoluteY="61dp" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        tools:context=".MainActivity"
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/oswald_medium"
-        android:text="@string/welcome_text"
-        android:textSize="36dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="118dp" />
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="400dp"
-        android:layout_height="188dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/promocionOriginal"
-        tools:layout_editor_absoluteY="197dp" />
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="#FFF7FF"
+            android:contentDescription="TODO"
+            android:src="@drawable/baseline_language_24"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+            app:layout_constraintHorizontal_bias="0.28"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="164dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="0.086"
+            app:srcCompat="@mipmap/promocion" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="152dp"
+            android:layout_height="57dp"
+            android:layout_marginEnd="104dp"
+            android:backgroundTint="#FFF7FF"
+            android:contentDescription="TODO"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.547"
+            app:srcCompat="@mipmap/image" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/oswald_medium"
+            android:text="@string/welcome_text"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageButton3" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="112dp"
+            android:layout_height="142dp"
+            android:layout_marginStart="24dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/oswald_medium"
+            android:textSize="18sp"
+            android:text="Schedule Repair"
+            app:layout_constraintBottom_toTopOf="@+id/card_bottom_navigation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:layout_constraintVertical_bias="0.329" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="112dp"
+            android:layout_height="142dp"
+            android:layout_marginStart="50dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/oswald_medium"
+            android:text="Repair Status"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/card_bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.615"
+            app:layout_constraintStart_toEndOf="@+id/button"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:layout_constraintVertical_bias="0.329" />
+
+        <androidx.cardview.widget.CardView
+                android:id="@+id/card_bottom_navigation"
+                android:layout_width="361dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:backgroundTint="#76B414"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottom_navigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    app:itemIconSize="28dp"
+                    app:itemTextAppearanceActive="@style/BottomNavTextAppearanceActive"
+                    app:itemTextAppearanceInactive="@style/BottomNavTextAppearanceInactive"
+                    app:itemIconTint="@color/bottom_nav_color_selector"
+                    app:itemTextColor="@color/bottom_nav_color_selector"
+                    app:labelVisibilityMode="labeled"
+                    app:menu="@menu/bottom_navigation_menu"/>
+            </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+

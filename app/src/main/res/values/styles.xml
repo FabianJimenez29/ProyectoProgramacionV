@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BottomNavTextAppearanceActive" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#FFFFFF</item> <!-- Color del texto activo -->
+    </style>
+
+    <style name="BottomNavTextAppearanceInactive" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#B0B0B0</item> <!-- Color del texto inactivo -->
+    </style>
+
+
+</resources>
