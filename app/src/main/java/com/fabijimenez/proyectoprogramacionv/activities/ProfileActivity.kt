@@ -17,8 +17,13 @@ class ProfileActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        //HOla Hola hola hoal hola hola hola hola hola hola hola hola hola hola hola hola
-
-        //Ahora creo que podemos utilizar de nuevo el mismo branch creo
+        //Ya hice los cambios!!
+        //Ya hice los cambios!!
+        //Ya hice los cambios!!
+        //Ya hice los cambios!!
+        //Ya hice los cambios!!
+        //Ya hice los cambios!!
+        //Ya hice los cambios!!
+        //Ya hice los cambios!!
     }
 }
