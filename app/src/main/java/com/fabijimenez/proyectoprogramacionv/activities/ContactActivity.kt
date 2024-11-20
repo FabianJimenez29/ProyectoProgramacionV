@@ -17,5 +17,16 @@ class ContactActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        //Acabo de clonar este proyecto
+        //Acabo de clonar este proyecto
+        //Acabo de clonar este proyecto
+        //Acabo de clonar este proyecto
+        //Acabo de clonar este proyecto
+        //Acabo de clonar este proyecto
+        //Acabo de clonar este proyecto
+        //Acabo de clonar este proyecto
+        //Acabo de clonar este proyecto
+        //Acabo de clonar este proyecto
     }
 }
