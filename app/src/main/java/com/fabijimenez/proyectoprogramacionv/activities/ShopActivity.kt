@@ -47,14 +47,14 @@ class ShopActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_branches -> {
-                    // Solo navega si la actividad actual no es la misma
+
                     if (javaClass != BranchesActivity::class.java) {
                         startActivity(Intent(this, BranchesActivity::class.java))
                     }
                     true
                 }
                 R.id.nav_contact -> {
-                    // Solo navega si la actividad actual no es la misma
+
                     if (javaClass != ContactActivity::class.java) {
                         startActivity(Intent(this, ContactActivity::class.java))
                     }
