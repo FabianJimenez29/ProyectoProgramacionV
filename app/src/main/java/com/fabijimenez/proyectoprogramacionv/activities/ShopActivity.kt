@@ -40,7 +40,7 @@ class ShopActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_profile -> {
-                    // Solo navega si la actividad actual no es la misma
+
                     if (javaClass != ProfileActivity::class.java) {
                         startActivity(Intent(this, ProfileActivity::class.java))
                     }
