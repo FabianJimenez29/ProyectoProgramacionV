@@ -2,6 +2,7 @@ package com.fabijimenez.proyectoprogramacionv.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.fabijimenez.proyectoprogramacionv.R
@@ -12,6 +13,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        val imageButton: ImageButton = findViewById(R.id.imageButton3)
+
+        // Configura el OnClickListener para redirigir a LanguageActivity
+        imageButton.setOnClickListener {
+            // Crear una intención para iniciar LanguageActivity
+            val intent = Intent(this, LanguageActivity::class.java)
+            startActivity(intent)
+        }
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
