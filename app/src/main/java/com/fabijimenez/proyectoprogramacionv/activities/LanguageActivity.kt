@@ -50,7 +50,7 @@ class LanguageActivity : AppCompatActivity() {
 
         val confirm = findViewById<Button>(R.id.btnConfirm)
         confirm.setOnClickListener {
-            // Crear una intención para iniciar LanguageActivity
+
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
