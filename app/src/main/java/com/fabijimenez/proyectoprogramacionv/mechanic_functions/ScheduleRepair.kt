@@ -1,11 +1,11 @@
 package com.fabijimenez.proyectoprogramacionv.mechanic_functions
 
+
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
@@ -18,6 +18,7 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalAdjusters
 
 class ScheduleRepair : AppCompatActivity() {
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,5 +96,13 @@ class ScheduleRepair : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+
+        val buttonIncreible: Button = findViewById(R.id.button7)
+
+        // Configura el listener
+        buttonIncreible.setOnClickListener {
+            startActivity(Intent(this, ScheduleRepair3::class.java))
+        }
     }
 }
