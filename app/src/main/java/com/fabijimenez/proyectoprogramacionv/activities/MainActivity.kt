@@ -2,10 +2,12 @@ package com.fabijimenez.proyectoprogramacionv.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.fabijimenez.proyectoprogramacionv.R
+import com.fabijimenez.proyectoprogramacionv.mechanic_functions.ScheduleRepair
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -66,7 +68,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        //Hola
+
         // Establecer el ítem seleccionado por defecto
         bottomNavigationView.selectedItemId = R.id.nav_home
+
+
+        val scheduleRepairBTN: Button = findViewById(R.id.scheduleRepairBTN)
+        scheduleRepairBTN.setOnClickListener {
+            // Crear un Intent para abrir ScheduleRepair
+            val intent = Intent(this, ScheduleRepair::class.java)
+            startActivity(intent)
+        }
     }
+
+
+
 }
