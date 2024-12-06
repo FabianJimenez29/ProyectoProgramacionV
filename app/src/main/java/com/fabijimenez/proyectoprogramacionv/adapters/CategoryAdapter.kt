@@ -25,7 +25,7 @@ class CategoryAdapter(private val categories: List<Category>) :
 
     override fun getItemCount(): Int = categories.size
 
-    // ViewHolder para manejar cada item violadoor
+    // ViewHolder para manejar cada item
     class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.categoryName)
         val image: ImageView = itemView.findViewById(R.id.categoryImage)
