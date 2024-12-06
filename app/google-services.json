@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "603399326056",
+    "firebase_url": "https://mecanicop5sebasyfabian-default-rtdb.firebaseio.com",
+    "project_id": "mecanicop5sebasyfabian",
+    "storage_bucket": "mecanicop5sebasyfabian.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603399326056:android:29708c0fec3aa1cc042edd",
+        "android_client_info": {
+          "package_name": "com.fabijimenez.proyectoprogramacionv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQIj9k6jptbt4o78eVZ-6xD1MKqthWa_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603399326056:android:b05e55969c457c97042edd",
+        "android_client_info": {
+          "package_name": "cr.ac.ulatina.firebaseprueba"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQIj9k6jptbt4o78eVZ-6xD1MKqthWa_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
