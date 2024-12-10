@@ -15,14 +15,21 @@ class ShopActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
 
-        categoryRecyclerView = findViewById<RecyclerView>(R.id.categoryRecyclerView)
+        categoryRecyclerView = findViewById(R.id.categoryRecyclerView)
 
         // Usamos un StaggeredGridLayoutManager para crear una cuadrícula fluida
         val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL) // 2 columnas
         categoryRecyclerView?.layoutManager = layoutManager
 
         // Crear el adapter y asignarlo al RecyclerView
-        categoryAdapter = CategoryAdapter(categories)
+        // Add an onCategoryClicked listener
+        categoryAdapter = CategoryAdapter(categories) { category ->
+            // Handle category click here
+            // For example, you might want to open a new activity or fragment
+            // based on the selected category
+            // For now, we'll just print the category name
+            println("Clicked category: ${category.name}")
+        }
         categoryRecyclerView?.adapter = categoryAdapter
     }
 
@@ -30,7 +37,7 @@ class ShopActivity : AppCompatActivity() {
         // Función para obtener los datos de las categorías
         get() {
             val categories: MutableList<Category> = ArrayList()
-            categories.add(Category("Baterías", R.drawable.image2)) // image2.webp
+            categories.add(Category("Baterias", R.drawable.image2)) // image2.webp
             categories.add(Category("Frenos", R.drawable.image3))   // image3.webp
             categories.add(Category("Llantas", R.drawable.image4))  // image4.webp
             categories.add(Category("Lubricantes", R.drawable.image5)) // image5.webp
