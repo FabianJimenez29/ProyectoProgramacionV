@@ -1,17 +1,13 @@
 package com.fabijimenez.proyectoprogramacionv.activities
 
-
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.fabijimenez.proyectoprogramacionv.adapters.CategoryAdapter
 import com.fabijimenez.proyectoprogramacionv.R
+import com.fabijimenez.proyectoprogramacionv.adapters.CategoryAdapter
 import com.fabijimenez.proyectoprogramacionv.classes.Category
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ShopActivity : AppCompatActivity() {
     private var categoryRecyclerView: RecyclerView? = null
@@ -21,86 +17,38 @@ class ShopActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
 
-        val imageButton: ImageButton = findViewById(R.id.imageButton3)
+        categoryRecyclerView = findViewById<RecyclerView>(R.id.categoryRecyclerView)
 
-        // Configura el OnClickListener para redirigir a LanguageActivity
-        imageButton.setOnClickListener {
-            // Crear una intención para iniciar LanguageActivity
-            val intent = Intent(this, LanguageActivity::class.java)
-            startActivity(intent)
-        }
-
-
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-
-        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_home -> {
-                    // Solo navega si la actividad actual no es la misma
-                    if (javaClass != MainActivity::class.java) {
-                        startActivity(Intent(this, MainActivity::class.java))
-                    }
-                    true
-                }
-                R.id.nav_store -> {
-
-                    if (javaClass != ShopActivity::class.java) {
-                        startActivity(Intent(this, ShopActivity::class.java))
-                    }
-                    true
-                }
-                R.id.nav_profile -> {
-
-                    if (javaClass != ProfileActivity::class.java) {
-                        startActivity(Intent(this, ProfileActivity::class.java))
-                    }
-                    true
-                }
-                R.id.nav_branches -> {
-
-                    if (javaClass != BranchesActivity::class.java) {
-                        startActivity(Intent(this, BranchesActivity::class.java))
-                    }
-                    true
-                }
-                R.id.nav_contact -> {
-
-                    if (javaClass != ContactActivity::class.java) {
-                        startActivity(Intent(this, ContactActivity::class.java))
-                    }
-                    true
-                }
-                else -> false
-            }
-        }
-
-        // Establecer el ítem seleccionado por defecto
-        bottomNavigationView.selectedItemId = R.id.nav_store
-
-        categoryRecyclerView = findViewById(R.id.categoryRecyclerView)
-
-        // Usamos un GridLayoutManager para organizar las categorías en 3 columnas
-        val layoutManager = GridLayoutManager(this, 3) // 3 columnas para las categorías
+        // Usamos un StaggeredGridLayoutManager para crear una cuadrícula fluida
+        val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL) // 2 columnas
         categoryRecyclerView?.layoutManager = layoutManager
 
         // Crear el adapter y asignarlo al RecyclerView
-        categoryAdapter = CategoryAdapter(categories)
+        categoryAdapter = CategoryAdapter(categories, ::onCategoryClicked)
         categoryRecyclerView?.adapter = categoryAdapter
     }
 
     private val categories: List<Category>
+        // Función para obtener los datos de las categorías
         get() {
             val categories: MutableList<Category> = ArrayList()
-            categories.add(Category("Baterías", R.drawable.image2))
-            categories.add(Category("Frenos", R.drawable.image3))
-            categories.add(Category("Llantas", R.drawable.image4))
-            categories.add(Category("Lubricantes", R.drawable.image5))
-            categories.add(Category("Detalle Automotriz", R.drawable.image6))
-            categories.add(Category("Filtros de Aceite", R.drawable.image7))
-            categories.add(Category("Suspenciones", R.drawable.image8))
-            categories.add(Category("Refrigerantes", R.drawable.image9))
-            categories.add(Category("Escobillas", R.drawable.image10))
+            categories.add(Category("Baterias", R.drawable.image2)) // image2.webp
+            categories.add(Category("Frenos", R.drawable.image3))   // image3.webp
+            categories.add(Category("Llantas", R.drawable.image4))  // image4.webp
+            categories.add(Category("Lubricantes", R.drawable.image5)) // image5.webp
+            categories.add(Category("Detalle Automotriz", R.drawable.image6)) // image6.webp
+            categories.add(Category("Filtros de Aceite", R.drawable.image7)) // image7.webp
+            categories.add(Category("Amortiguadores", R.drawable.image8)) // image8.webp
+            categories.add(Category("Refrigerante", R.drawable.image9)) // image9.webp
+            categories.add(Category("Cepillos", R.drawable.image10)) // image10.webp
             return categories
         }
-}
 
+    private fun onCategoryClicked(category: Category) {
+        // Aquí puedes implementar la lógica para manejar el clic en una categoría
+        // Por ejemplo, puedes abrir la actividad `ProductsActivity` y pasar la categoría seleccionada
+        val intent = Intent(this, ProductsActivity::class.java)
+        intent.putExtra("category", category)
+        startActivity(intent)
+    }
+}
