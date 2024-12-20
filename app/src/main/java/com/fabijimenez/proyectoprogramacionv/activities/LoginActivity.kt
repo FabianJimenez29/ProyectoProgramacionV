@@ -87,7 +87,6 @@ class LoginActivity : AppCompatActivity() {
         val usuario = usuarioEditText.text.toString().trim()
         val contrasena = contrasenaEditText.text.toString()
 
-        // Query to find the user
         val query = databaseReference.child("usuarios")
             .orderByChild("usuario")
             .equalTo(usuario)
@@ -95,47 +94,33 @@ class LoginActivity : AppCompatActivity() {
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    // Iterate over results (should be only one user)
                     for (userSnapshot in dataSnapshot.children) {
                         val usuarioEncontrado = userSnapshot.getValue<Usuario>()
+                        val uid = userSnapshot.key // Obtener el UID
 
-                        // Verify password
-                        if (usuarioEncontrado != null &&
-                            usuarioEncontrado.password == contrasena) {
-
-                            // Successful login
+                        if (usuarioEncontrado != null && usuarioEncontrado.password == contrasena) {
                             Toast.makeText(
                                 this@LoginActivity,
                                 "Inicio de sesión exitoso",
                                 Toast.LENGTH_SHORT
                             ).show()
 
-                            // Navigate to main screen
+                            // Pasar el UID a MainActivity
                             val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                            intent.putExtra("USER_UID", uid)
                             startActivity(intent)
                             finish()
-
                             return
                         }
                     }
-                    // Incorrect password
-                    Toast.makeText(
-                        this@LoginActivity,
-                        "Contraseña incorrecta",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    // Contraseña incorrecta
+                    Toast.makeText(this@LoginActivity, "Contraseña incorrecta", Toast.LENGTH_SHORT).show()
                 } else {
-                    // User not found
-                    Toast.makeText(
-                        this@LoginActivity,
-                        "Usuario no encontrado",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this@LoginActivity, "Usuario no encontrado", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // Handle query errors
                 Toast.makeText(
                     this@LoginActivity,
                     "Error de consulta: ${databaseError.message}",

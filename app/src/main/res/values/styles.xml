@@ -10,5 +10,11 @@
         <item name="android:textColor">#B0B0B0</item> <!-- Color del texto inactivo -->
     </style>
 
+    <style name="ProfileInfoText">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
 
 </resources>
