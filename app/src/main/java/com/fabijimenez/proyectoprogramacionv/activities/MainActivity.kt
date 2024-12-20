@@ -4,24 +4,41 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.fabijimenez.proyectoprogramacionv.R
 import com.fabijimenez.proyectoprogramacionv.mechanic_functions.ScheduleRepair
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class MainActivity : AppCompatActivity() {
+    private var userUid: String? = null
+    private lateinit var databaseReference: DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        val imageButton: ImageButton = findViewById(R.id.imageButton3)
+        // Inicializar Firebase
+        databaseReference = FirebaseDatabase.getInstance().reference
 
-        // Configura el OnClickListener para redirigir a LanguageActivity
+        // Obtener el UID del intent
+        userUid = intent.getStringExtra("USER_UID")
+
+        // Cargar y mostrar el nombre del usuario
+        loadUserName()
+
+        val imageButton: ImageButton = findViewById(R.id.imageButton3)
         imageButton.setOnClickListener {
-            // Crear una intención para iniciar LanguageActivity
             val intent = Intent(this, LanguageActivity::class.java)
+            intent.putExtra("USER_UID", userUid)
             startActivity(intent)
         }
 
@@ -30,37 +47,42 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
-                    // Solo navega si la actividad actual no es la misma
                     if (javaClass != MainActivity::class.java) {
-                        startActivity(Intent(this, MainActivity::class.java))
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.putExtra("USER_UID", userUid)
+                        startActivity(intent)
                     }
                     true
                 }
                 R.id.nav_store -> {
-                    // Solo navega si la actividad actual no es la misma
                     if (javaClass != ShopActivity::class.java) {
-                        startActivity(Intent(this, ShopActivity::class.java))
+                        val intent = Intent(this, ShopActivity::class.java)
+                        intent.putExtra("USER_UID", userUid)
+                        startActivity(intent)
                     }
                     true
                 }
                 R.id.nav_profile -> {
-                    // Solo navega si la actividad actual no es la misma
                     if (javaClass != ProfileActivity::class.java) {
-                        startActivity(Intent(this, ProfileActivity::class.java))
+                        val intent = Intent(this, ProfileActivity::class.java)
+                        intent.putExtra("USER_UID", userUid)
+                        startActivity(intent)
                     }
                     true
                 }
                 R.id.nav_branches -> {
-                    // Solo navega si la actividad actual no es la misma
                     if (javaClass != BranchesActivity::class.java) {
-                        startActivity(Intent(this, BranchesActivity::class.java))
+                        val intent = Intent(this, BranchesActivity::class.java)
+                        intent.putExtra("USER_UID", userUid)
+                        startActivity(intent)
                     }
                     true
                 }
                 R.id.nav_contact -> {
-                    // Solo navega si la actividad actual no es la misma
                     if (javaClass != ContactActivity::class.java) {
-                        startActivity(Intent(this, ContactActivity::class.java))
+                        val intent = Intent(this, ContactActivity::class.java)
+                        intent.putExtra("USER_UID", userUid)
+                        startActivity(intent)
                     }
                     true
                 }
@@ -68,20 +90,41 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //Hola
-
-        // Establecer el ítem seleccionado por defecto
         bottomNavigationView.selectedItemId = R.id.nav_home
-
 
         val scheduleRepairBTN: Button = findViewById(R.id.scheduleRepairBTN)
         scheduleRepairBTN.setOnClickListener {
-            // Crear un Intent para abrir ScheduleRepair
             val intent = Intent(this, ScheduleRepair::class.java)
+            intent.putExtra("USER_UID", userUid)
             startActivity(intent)
+        }
+
+        val button2: Button = findViewById(R.id.button2)
+        button2.setOnClickListener {
+            // Aquí puedes agregar la navegación a la actividad de estado de reparación
+            Toast.makeText(this, "Función en desarrollo", Toast.LENGTH_SHORT).show()
         }
     }
 
+    private fun loadUserName() {
+        val userNameTextView = findViewById<TextView>(R.id.userNameTextView)
 
+        userUid?.let { uid ->
+            databaseReference.child("usuarios").child(uid)
+                .addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val nombre = snapshot.child("nombre").getValue(String::class.java)
+                        userNameTextView.text = "¡Bienvenido, $nombre!"
+                    }
 
+                    override fun onCancelled(error: DatabaseError) {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Error al cargar el nombre: ${error.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                })
+        }
+    }
 }

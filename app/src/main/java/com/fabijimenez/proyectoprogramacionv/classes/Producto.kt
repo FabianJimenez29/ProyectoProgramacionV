@@ -8,5 +8,12 @@ data class Producto(
     val nombre: String = "",
     val descripcion: String = "",
     val precio: Double = 0.0,
-    var imagenUrl: String = ""
+    var imagenUrl: String = "",
+    val categoria: ProductCategory = ProductCategory() // Nuevo campo
+) : Parcelable
+
+// Nueva clase para representar la categoría
+@Parcelize
+data class ProductCategory(
+    val name: String = ""
 ) : Parcelable
